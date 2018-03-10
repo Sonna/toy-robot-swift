@@ -9,6 +9,12 @@ class ToyRobotTests: XCTestCase {
         XCTAssertEqual(ToyRobot().text, "Hello, World!")
     }
 
+    func testRobotConstuctor() {
+        let subject = ToyRobot.Robot()
+        XCTAssertEqual(subject.x, 0)
+        XCTAssertEqual(subject.y, 0)
+        XCTAssertEqual(subject.facing, "NORTH")
+    }
 
     static var allTests = [
         ("testExample", testExample),
