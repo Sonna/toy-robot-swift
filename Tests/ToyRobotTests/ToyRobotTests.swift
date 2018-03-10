@@ -1,12 +1,12 @@
 import XCTest
-@testable import toy_robot_swift
+@testable import ToyRobot
 
-class toy_robot_swiftTests: XCTestCase {
+class ToyRobotTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(toy_robot_swift().text, "Hello, World!")
+        XCTAssertEqual(ToyRobot().text, "Hello, World!")
     }
 
 

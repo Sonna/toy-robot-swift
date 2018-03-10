@@ -1,3 +1,3 @@
-struct toy_robot_swift {
+struct ToyRobot {
     var text = "Hello, World!"
 }
