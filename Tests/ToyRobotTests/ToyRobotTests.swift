@@ -16,6 +16,34 @@ class ToyRobotTests: XCTestCase {
         XCTAssertEqual(subject.facing, "NORTH")
     }
 
+    func testRobotConstuctorWithX() {
+        let subject = ToyRobot.Robot(x: 1)
+        XCTAssertEqual(subject.x, 1)
+        XCTAssertEqual(subject.y, 0)
+        XCTAssertEqual(subject.facing, "NORTH")
+    }
+
+    func testRobotConstuctorWithY() {
+        let subject = ToyRobot.Robot(y: 1)
+        XCTAssertEqual(subject.x, 0)
+        XCTAssertEqual(subject.y, 1)
+        XCTAssertEqual(subject.facing, "NORTH")
+    }
+
+    func testRobotConstuctorWithFacing() {
+        let subject = ToyRobot.Robot(facing: "SOUTH")
+        XCTAssertEqual(subject.x, 0)
+        XCTAssertEqual(subject.y, 0)
+        XCTAssertEqual(subject.facing, "SOUTH")
+    }
+
+    func testRobotConstuctorWithAllParameters() {
+        let subject = ToyRobot.Robot(x: 1, y: 1, facing: "SOUTH")
+        XCTAssertEqual(subject.x, 1)
+        XCTAssertEqual(subject.y, 1)
+        XCTAssertEqual(subject.facing, "SOUTH")
+    }
+
     static var allTests = [
         ("testExample", testExample),
     ]
