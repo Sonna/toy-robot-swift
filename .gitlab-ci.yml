@@ -1,0 +1,8 @@
+image: swift:latest
+
+before_script:
+  - swift build
+
+test:
+  script:
+  - swift test
