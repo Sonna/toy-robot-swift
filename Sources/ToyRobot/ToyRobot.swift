@@ -30,19 +30,19 @@ struct ToyRobot {
           self.facing = facing
         }
 
-        func report(_args: String = "") {
+        func report(_ _args: String = "") {
           print("\(x), \(y), \(facing)")
         }
 
-        func left(_args: String = "") {
+        func left(_ _args: String = "") {
           facing = TURN[facing]!["LEFT"]!
         }
 
-        func right(_args: String = "") {
+        func right(_ _args: String = "") {
           facing = TURN[facing]!["RIGHT"]!
         }
 
-        func move(_args: String = "") {
+        func move(_ _args: String = "") {
           x += MOVE[facing]!["x"]!
           y += MOVE[facing]!["y"]!
 
@@ -61,6 +61,17 @@ struct ToyRobot {
           x = Int(coordinates[0])!
           y = Int(coordinates[1])!
           facing = coordinates[2]
+        }
+
+        func exec(_ command: String, _ args: String = "") {
+          switch command {
+            case "PLACE": place(args)
+            case "MOVE": move(args)
+            case "LEFT": left(args)
+            case "RIGHT": right(args)
+            case "REPORT": report(args)
+            default: break // Do nothing
+          }
         }
     }
 }

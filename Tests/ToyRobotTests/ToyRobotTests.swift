@@ -171,6 +171,15 @@ class ToyRobotTests: UMBaseTestCase {
         XCTAssertEqual(subject.facing, "NORTH")
     }
 
+    func testRobotExecReport() {
+        let subject = ToyRobot.Robot()
+
+        self.prepareStdOut()
+        subject.exec("REPORT")
+
+        XCTAssertEqual(self.getOutput(), "0, 0, NORTH\n")
+    }
+
     static var allTests = [
         ("testExample", testExample),
     ]
