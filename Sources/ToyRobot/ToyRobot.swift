@@ -11,5 +11,9 @@ struct ToyRobot {
           self.y = y
           self.facing = facing
         }
+
+        func report(_args: String = "") {
+          print("\(x), \(y), \(facing)")
+        }
     }
 }

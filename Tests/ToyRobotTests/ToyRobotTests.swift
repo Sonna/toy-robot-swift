@@ -1,7 +1,7 @@
 import XCTest
 @testable import ToyRobot
 
-class ToyRobotTests: XCTestCase {
+class ToyRobotTests: Support.UMBaseTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
@@ -42,6 +42,14 @@ class ToyRobotTests: XCTestCase {
         XCTAssertEqual(subject.x, 1)
         XCTAssertEqual(subject.y, 1)
         XCTAssertEqual(subject.facing, "SOUTH")
+    }
+
+    func testRobotReport() {
+        let subject = ToyRobot.Robot()
+        self.prepareStdOut()
+        subject.report()
+
+        XCTAssertEqual(self.getOutput(), "0, 0, NORTH\n")
     }
 
     static var allTests = [
