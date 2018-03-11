@@ -202,6 +202,20 @@ class ToyRobotTests: UMBaseTestCase {
         XCTAssertEqual(self.getOutput(), "0, 0, NORTH\n1, 2, EAST\n")
     }
 
+    func testMainFileInputExampleA() {
+        self.prepareStdOut()
+        ToyRobot.main(["testMainFileInput", "Tests/data/example_a.txt"])
+
+        XCTAssertEqual(self.getOutput(), "0, 0, NORTH\n")
+    }
+
+    func testMainFileInputExampleB() {
+        self.prepareStdOut()
+        ToyRobot.main(["testMainFileInput", "Tests/data/example_b.txt"])
+
+        XCTAssertEqual(self.getOutput(), "0, 1, NORTH\n2, 1, EAST\n")
+    }
+
     static var allTests = [
         ("testRobotConstuctor", testRobotConstuctor),
         ("testRobotConstuctorWithX", testRobotConstuctorWithX),
@@ -224,5 +238,7 @@ class ToyRobotTests: UMBaseTestCase {
         ("testRobotCannotMoveOffTableAt04North", testRobotCannotMoveOffTableAt04North),
         ("testRobotExecReport", testRobotExecReport),
         ("testMain", testMain),
+        ("testMainFileInputExampleA", testMainFileInputExampleA),
+        ("testMainFileInputExampleB", testMainFileInputExampleB),
     ]
 }

@@ -2,6 +2,7 @@
 
 swiftc \
   Sources/ToyRobot/ToyRobot.swift \
+  Sources/ToyRobot/LineReader.swift \
   Sources/main.swift \
   \
   -o bin/main

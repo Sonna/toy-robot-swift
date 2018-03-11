@@ -1,1 +1,1 @@
-ToyRobot.main()
+ToyRobot.main(CommandLine.arguments)

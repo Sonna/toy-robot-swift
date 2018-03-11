@@ -75,23 +75,46 @@ struct ToyRobot {
         }
     }
 
-    static func main() {
-      let robot = ToyRobot.Robot()
-      var command: String = ""
-      var args: String = ""
+    static func main(_ arguments: [String]? = nil) {
+        let robot = ToyRobot.Robot()
+        var command: String = ""
+        var args: String = ""
 
-      while command != "EXIT" {
-          if let line = readLine() {
-              var input = line.split(separator: " ").map { String($0) }
-              command = input[0]
+        if arguments != nil && arguments!.count > 1 {
+            let filepath = arguments![1]
 
-              if input.count > 1 {
-                  args = input[1]
-              }
+            guard let reader = LineReader(path: filepath) else {
+                return // cannot open file
+            }
 
-              robot.exec(command, args)
-          }
-      }
+            for line in reader {
+                var input = line
+                  .trimmingCharacters(in: .whitespacesAndNewlines)
+                  .split(separator: " ")
+                  .map { String($0) }
 
+                command = input[0]
+
+                if input.count > 1 {
+                    args = input[1]
+                }
+
+                robot.exec(command, args)
+            }
+        }
+        else {
+            while command != "EXIT" {
+                if let line = readLine() {
+                    var input = line.split(separator: " ").map { String($0) }
+                    command = input[0]
+
+                    if input.count > 1 {
+                        args = input[1]
+                    }
+
+                    robot.exec(command, args)
+                }
+            }
+        }
     }
 }
