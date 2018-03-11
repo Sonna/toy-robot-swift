@@ -1,11 +1,14 @@
 import XCTest
+@testable import Support
 @testable import ToyRobot
 
-class ToyRobotTests: Support.UMBaseTestCase {
+typealias UMBaseTestCase = Support.UMBaseTestCase
+
+class ToyRobotTests: UMBaseTestCase {
     func testExample() {
         // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
+        // Use XCTAssert and related functions to verify your tests produce the
+        // correct results.
         XCTAssertEqual(ToyRobot().text, "Hello, World!")
     }
 

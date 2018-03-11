@@ -21,8 +21,12 @@ let package = Package(
         .target(
             name: "ToyRobot",
             dependencies: []),
+        .target(
+            name: "Support",
+            dependencies: [],
+            path: "Tests/Support"),
         .testTarget(
             name: "ToyRobotTests",
-            dependencies: ["ToyRobot"]),
+            dependencies: ["ToyRobot", "Support"]),
     ]
 )
