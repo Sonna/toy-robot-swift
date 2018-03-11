@@ -107,6 +107,70 @@ class ToyRobotTests: UMBaseTestCase {
         XCTAssertEqual(subject.facing, "SOUTH")
     }
 
+    func testRobotPlace() {
+        let subject = ToyRobot.Robot()
+        // subject.place(coordinate: "1,1,EAST")
+        subject.place("1,1,EAST")
+
+        XCTAssertEqual(subject.x, 1)
+        XCTAssertEqual(subject.y, 1)
+        XCTAssertEqual(subject.facing, "EAST")
+    }
+
+    func testRobotCannotMoveOffTableAt40South() {
+        let subject = ToyRobot.Robot()
+        subject.place("4,0,SOUTH")
+
+        XCTAssertEqual(subject.x, 4)
+        XCTAssertEqual(subject.y, 0)
+        XCTAssertEqual(subject.facing, "SOUTH")
+    }
+
+    func testRobotCannotMoveOffTableAt40East() {
+        let subject = ToyRobot.Robot()
+        subject.place("4,0,EAST")
+
+        XCTAssertEqual(subject.x, 4)
+        XCTAssertEqual(subject.y, 0)
+        XCTAssertEqual(subject.facing, "EAST")
+    }
+
+    func testRobotCannotMoveOffTableAt44North() {
+        let subject = ToyRobot.Robot()
+        subject.place("4,4,NORTH")
+
+        XCTAssertEqual(subject.x, 4)
+        XCTAssertEqual(subject.y, 4)
+        XCTAssertEqual(subject.facing, "NORTH")
+    }
+
+    func testRobotCannotMoveOffTableAt44East() {
+        let subject = ToyRobot.Robot()
+        subject.place("4,4,EAST")
+
+        XCTAssertEqual(subject.x, 4)
+        XCTAssertEqual(subject.y, 4)
+        XCTAssertEqual(subject.facing, "EAST")
+    }
+
+    func testRobotCannotMoveOffTableAt04West() {
+        let subject = ToyRobot.Robot()
+        subject.place("0,4,WEST")
+
+        XCTAssertEqual(subject.x, 0)
+        XCTAssertEqual(subject.y, 4)
+        XCTAssertEqual(subject.facing, "WEST")
+    }
+
+    func testRobotCannotMoveOffTableAt04North() {
+        let subject = ToyRobot.Robot()
+        subject.place("0,4,NORTH")
+
+        XCTAssertEqual(subject.x, 0)
+        XCTAssertEqual(subject.y, 4)
+        XCTAssertEqual(subject.facing, "NORTH")
+    }
+
     static var allTests = [
         ("testExample", testExample),
     ]

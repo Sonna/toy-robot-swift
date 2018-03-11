@@ -10,6 +10,8 @@ struct ToyRobot {
           "WEST": ["x": -1, "y": 0]
         ]
 
+        // let SEPARATORS_REGEX = "[ |,\\s*]"
+
         // let TURN: [String: [String: String]] = [
         let TURN = [
           "NORTH": ["LEFT": "WEST", "RIGHT": "EAST"],
@@ -51,6 +53,14 @@ struct ToyRobot {
           if (y < 0 || y > 4) {
             y -= MOVE[facing]!["y"]!
           }
+        }
+
+        func place(_ coordinate: String) {
+          // let (dx, dy, dFacing) = coordinate.split(separator: ",")
+          let coordinates = coordinate.split(separator: ",").map { String($0) }
+          x = Int(coordinates[0])!
+          y = Int(coordinates[1])!
+          facing = coordinates[2]
         }
     }
 }
