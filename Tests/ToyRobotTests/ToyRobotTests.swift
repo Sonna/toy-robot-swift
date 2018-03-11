@@ -55,6 +55,58 @@ class ToyRobotTests: UMBaseTestCase {
         XCTAssertEqual(self.getOutput(), "0, 0, NORTH\n")
     }
 
+    func testRobotLeft() {
+        let subject = ToyRobot.Robot()
+        subject.left()
+        XCTAssertEqual(subject.x, 0)
+        XCTAssertEqual(subject.y, 0)
+        XCTAssertEqual(subject.facing, "WEST")
+    }
+
+    func testRobotRight() {
+        let subject = ToyRobot.Robot()
+        subject.right()
+        XCTAssertEqual(subject.x, 0)
+        XCTAssertEqual(subject.y, 0)
+        XCTAssertEqual(subject.facing, "EAST")
+    }
+
+    func testRobotMove() {
+        let subject = ToyRobot.Robot()
+        subject.move()
+        XCTAssertEqual(subject.x, 0)
+        XCTAssertEqual(subject.y, 1)
+        XCTAssertEqual(subject.facing, "NORTH")
+    }
+
+    func testRobotMoveEast() {
+        let subject = ToyRobot.Robot()
+        subject.right()
+        subject.move()
+        XCTAssertEqual(subject.x, 1)
+        XCTAssertEqual(subject.y, 0)
+        XCTAssertEqual(subject.facing, "EAST")
+    }
+
+    func testRobotMoveWest() {
+        let subject = ToyRobot.Robot()
+        subject.left()
+        subject.move()
+        XCTAssertEqual(subject.x, 0)
+        XCTAssertEqual(subject.y, 0)
+        XCTAssertEqual(subject.facing, "WEST")
+    }
+
+    func testRobotMoveSouth() {
+        let subject = ToyRobot.Robot()
+        subject.left()
+        subject.left()
+        subject.move()
+        XCTAssertEqual(subject.x, 0)
+        XCTAssertEqual(subject.y, 0)
+        XCTAssertEqual(subject.facing, "SOUTH")
+    }
+
     static var allTests = [
         ("testExample", testExample),
     ]
