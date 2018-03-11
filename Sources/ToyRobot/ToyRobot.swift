@@ -74,4 +74,24 @@ struct ToyRobot {
           }
         }
     }
+
+    static func main() {
+      let robot = ToyRobot.Robot()
+      var command: String = ""
+      var args: String = ""
+
+      while command != "EXIT" {
+          if let line = readLine() {
+              var input = line.split(separator: " ").map { String($0) }
+              command = input[0]
+
+              if input.count > 1 {
+                  args = input[1]
+              }
+
+              robot.exec(command, args)
+          }
+      }
+
+    }
 }

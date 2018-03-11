@@ -1,3 +1,7 @@
 #!/bin/bash
 
-swiftc Sources/main.swift -o bin/main
+swiftc \
+  Sources/ToyRobot/ToyRobot.swift \
+  Sources/main.swift \
+  \
+  -o bin/main

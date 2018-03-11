@@ -5,13 +5,6 @@ import XCTest
 typealias UMBaseTestCase = Support.UMBaseTestCase
 
 class ToyRobotTests: UMBaseTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the
-        // correct results.
-        XCTAssertEqual(ToyRobot().text, "Hello, World!")
-    }
-
     func testRobotConstuctor() {
         let subject = ToyRobot.Robot()
         XCTAssertEqual(subject.x, 0)
@@ -180,7 +173,56 @@ class ToyRobotTests: UMBaseTestCase {
         XCTAssertEqual(self.getOutput(), "0, 0, NORTH\n")
     }
 
+    func testMain() {
+        self.prepareStdOut()
+        self.setStdInput(input: "EXIT\n")
+
+        ToyRobot.main()
+
+        XCTAssertEqual(self.getOutput(), "")
+    }
+
+    func testMainReport() {
+        self.prepareStdOut()
+        self.setStdInput(input: "REPORT\nEXIT\n")
+
+        ToyRobot.main()
+
+        XCTAssertEqual(self.getOutput(), "0, 0, NORTH\n")
+    }
+
+    func testMainMove() {
+        self.prepareStdOut()
+        self.setStdInput(
+            input: "REPORT\nMOVE\nMOVE\nRIGHT\nMOVE\nREPORT\nEXIT\n"
+        )
+
+        ToyRobot.main()
+
+        XCTAssertEqual(self.getOutput(), "0, 0, NORTH\n1, 2, EAST\n")
+    }
+
     static var allTests = [
-        ("testExample", testExample),
+        ("testRobotConstuctor", testRobotConstuctor),
+        ("testRobotConstuctorWithX", testRobotConstuctorWithX),
+        ("testRobotConstuctorWithY", testRobotConstuctorWithY),
+        ("testRobotConstuctorWithFacing", testRobotConstuctorWithFacing),
+        ("testRobotConstuctorWithAllParameters", testRobotConstuctorWithAllParameters),
+        ("testRobotReport", testRobotReport),
+        ("testRobotLeft", testRobotLeft),
+        ("testRobotRight", testRobotRight),
+        ("testRobotMove", testRobotMove),
+        ("testRobotMoveEast", testRobotMoveEast),
+        ("testRobotMoveWest", testRobotMoveWest),
+        ("testRobotMoveSouth", testRobotMoveSouth),
+        ("testRobotPlace", testRobotPlace),
+        ("testRobotCannotMoveOffTableAt40South", testRobotCannotMoveOffTableAt40South),
+        ("testRobotCannotMoveOffTableAt40East", testRobotCannotMoveOffTableAt40East),
+        ("testRobotCannotMoveOffTableAt44North", testRobotCannotMoveOffTableAt44North),
+        ("testRobotCannotMoveOffTableAt44East", testRobotCannotMoveOffTableAt44East),
+        ("testRobotCannotMoveOffTableAt04West", testRobotCannotMoveOffTableAt04West),
+        ("testRobotCannotMoveOffTableAt04North", testRobotCannotMoveOffTableAt04North),
+        ("testRobotExecReport", testRobotExecReport),
+        ("testMain", testMain),
     ]
 }
