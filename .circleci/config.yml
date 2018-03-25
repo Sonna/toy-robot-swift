@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: swift:latest
+    steps:
+    - checkout
+    - run: swift build
+
+  test:
+    docker:
+    - image: sonna/check:latest
+    steps:
+    - checkout
+    - run: swift test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+    - build
+    - test
