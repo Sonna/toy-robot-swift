@@ -9,7 +9,7 @@ jobs:
 
   test:
     docker:
-    - image: sonna/check:latest
+    - image: swift:latest
     steps:
     - checkout
     - run: swift test
